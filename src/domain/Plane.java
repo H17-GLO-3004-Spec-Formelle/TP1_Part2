@@ -20,6 +20,7 @@ public class Plane extends Thread {
 		} else {
 			
 		}
+		System.out.println(name);
 	}
 	
 	@Override
