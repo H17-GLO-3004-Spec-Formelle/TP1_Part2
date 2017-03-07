@@ -27,7 +27,7 @@ public class Main {
 		}
 		
 		for (int i = 0; i < configs.get("planes"); i++) {
-			airport.addPlane(new Plane("Plane" + String.valueOf(i)));
+			airport.addPlane(new Plane("Plane" + String.valueOf(i), airport));
 		}
 		for (int i = 0; i < configs.get("fuels"); i++) {
 			airport.addFuel(new Fuel("Fuel" + String.valueOf(i)));
@@ -43,6 +43,7 @@ public class Main {
 		}
 		
 		airport.start();
+		
 	}
 
 }

@@ -6,7 +6,7 @@ public class Runway {
 	private String name;
 	
 	public Runway(String name) {
-		isAvailable = false;
+		isAvailable = true;
 		this.name = name;
 	}
 	
@@ -21,8 +21,8 @@ public class Runway {
 		isAvailable = false;
 	}
 	
-	public void use() {
-		System.out.println("Utilisation de la ressource " + this.toString() + " en cours.");
+	public void use() throws ResourceNotAvailableException {
+		System.out.println("This resource is being used : " + this.toString());
 		
 		try {
 			Thread.sleep(2000);
@@ -33,6 +33,7 @@ public class Runway {
 	
 	public void release() {
 		isAvailable = true;
+		System.out.println("This resource is now free : " + this.toString());
 	}
 	
 	@Override
