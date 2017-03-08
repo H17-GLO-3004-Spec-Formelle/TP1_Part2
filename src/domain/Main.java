@@ -2,19 +2,10 @@ package domain;
 
 import java.util.HashMap;
 
-import resources.Fuel;
-import resources.Gate;
-import resources.Runway;
-import resources.Technique;
-
 public class Main {
-	
-	private static HashMap<String, Integer> configs;
-	private static Airport airport;
 
 	public static void main(String[] args) {
-		configs = new HashMap<>();
-		airport = new Airport();
+		final HashMap<String, Integer> configs = new HashMap<>();
 		
 		for (int i = 0; i < args.length - 1; i++) {
 			switch (args[i].charAt(0)) {
@@ -25,25 +16,16 @@ public class Main {
 					break;
 			}
 		}
-		
-		for (int i = 0; i < configs.get("planes"); i++) {
-			airport.addPlane(new Plane("Plane" + String.valueOf(i), airport));
-		}
-		for (int i = 0; i < configs.get("fuels"); i++) {
-			airport.addFuel(new Fuel("Fuel" + String.valueOf(i)));
-		}
-		for (int i = 0; i < configs.get("gates"); i++) {
-			airport.addGate(new Gate("Gate" + String.valueOf(i)));
-		}
-		for (int i = 0; i < configs.get("techniques"); i++) {
-			airport.addTechnique(new Technique("Technique" + String.valueOf(i)));
-		}
-		for (int i = 0; i < configs.get("runways"); i++) {
-			airport.addRunway(new Runway("Runway" + String.valueOf(i)));
-		}
-		
+
+		final Airport airport = new Airport();
+		airport.addResource(Resource.Type.FUEL, 3);//configs.get("fuels"));
+		airport.addResource(Resource.Type.GATE, 3);//configs.get("gates"));
+		airport.addResource(Resource.Type.TECHNIQUE, 3);//configs.get("techniques"));
+		airport.addResource(Resource.Type.RUNWAY, 3);//configs.get("runways"));
+
+		airport.addPlanes(3);//configs.get("planes"));
+
 		airport.start();
-		
 	}
 
 }
