@@ -39,7 +39,6 @@ public class Resource {
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt(); //Should happen only when killing the execution
         }
-
     }
 
     void release() {
