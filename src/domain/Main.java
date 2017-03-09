@@ -17,13 +17,22 @@ public class Main {
 			}
 		}
 
-		final Airport airport = new Airport();
-		airport.addResource(Resource.Type.FUEL, 3);//configs.get("fuels"));
-		airport.addResource(Resource.Type.GATE, 3);//configs.get("gates"));
-		airport.addResource(Resource.Type.TECHNIQUE, 3);//configs.get("techniques"));
-		airport.addResource(Resource.Type.RUNWAY, 3);//configs.get("runways"));
+		// Temporaire jusqu'à ce qu'on lise à partir d'un fichier de config ->
+		configs.put("fuels", 3);
+		configs.put("gates", 3);
+		configs.put("techniques", 3);
+		configs.put("runways", 3);
 
-		airport.addPlanes(3);//configs.get("planes"));
+		configs.put("planes", 3);
+		// <- Temporaire jusqu'à ce qu'on lise à partir d'un fichier de config
+
+		final Airport airport = new Airport();
+		airport.addResource(Resource.Type.FUEL, configs.get("fuels"));
+		airport.addResource(Resource.Type.GATE, configs.get("gates"));
+		airport.addResource(Resource.Type.TECHNIQUE, configs.get("techniques"));
+		airport.addResource(Resource.Type.RUNWAY, configs.get("runways"));
+
+		airport.addPlanes(configs.get("planes"));
 
 		airport.start();
 	}

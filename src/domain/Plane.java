@@ -34,7 +34,6 @@ public class Plane extends Thread {
 
 			} catch (Exception e) {
 				System.out.println(String.format("%s encountered an error: %s", this, e.getMessage()));
-				resourceAcquired = false;
 			}
 		}
 	}

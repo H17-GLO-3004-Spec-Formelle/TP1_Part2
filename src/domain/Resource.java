@@ -35,7 +35,7 @@ public class Resource {
 
     void use() {
         try {
-            Thread.sleep(0);//2000);
+            Thread.sleep(2000);
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt(); //Should happen only when killing the execution
         }

@@ -17,7 +17,10 @@ class Airport {
 	}
 
     Resource getResource(Resource.Type type) throws NoMoreResourceAvailableException {
-	    return resources.stream().filter(x -> x.getType().equals(type) && x.isAvailable()).findAny().orElseThrow(() -> new NoMoreResourceAvailableException(type));
+	    return resources.stream()
+                .filter(x -> x.getType().equals(type) && x.isAvailable())
+                .findAny()
+                .orElseThrow(() -> new NoMoreResourceAvailableException(type));
     }
 
     void addPlanes(int amount) {
