@@ -25,7 +25,7 @@ class Airport {
 
     void addPlanes(int amount) {
         for (int i = 0; i < amount; i++) {
-            planes.add(new Plane("PLANE" + String.valueOf(i), this));
+            planes.add(new Plane(i, this));
         }
     }
 

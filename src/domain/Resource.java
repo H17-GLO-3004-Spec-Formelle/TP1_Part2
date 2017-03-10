@@ -50,7 +50,7 @@ public class Resource {
 
     @Override
     public String toString() {
-        return this.type.name() + String.valueOf(number);
+        return type.name() + String.valueOf(number);
     }
 
     public enum Type {
@@ -70,7 +70,7 @@ public class Resource {
 
         @Override
         public String toString() {
-            return this.name;
+            return name;
         }
     }
 }

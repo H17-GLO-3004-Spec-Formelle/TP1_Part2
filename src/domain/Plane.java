@@ -1,14 +1,14 @@
 package domain;
 
 public class Plane extends Thread {
-	
-	private final String name;
+
+    private final int number;
 	private final Airport airport;
 
 	private Direction direction = Direction.DEPARTURE;
 
-	Plane(String name, Airport airport) {
-		this.name = name;
+	Plane(int number, Airport airport) {
+		this.number = number;
 		this.airport = airport;
 	}
 
@@ -63,7 +63,7 @@ public class Plane extends Thread {
 	
 	@Override
 	public String toString() {
-		return this.name;
+        return "PLANE" + String.valueOf(number);
 	}
 
 	enum Direction {
