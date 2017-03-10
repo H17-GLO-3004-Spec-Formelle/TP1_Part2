@@ -1,90 +1,77 @@
 package domain;
 
-import java.util.Random;
-
-
 public class Plane extends Thread {
-	
-	private String name;
-	private boolean onDeparture; //Tells if the plane is coming or going.
-	private Airport airport;
-	
-	public Plane(String name, Airport airport) {
-		this.name = name;
+
+    private final int number;
+	private final Airport airport;
+
+	private Direction direction = Direction.DEPARTURE;
+
+	Plane(int number, Airport airport) {
+		this.number = number;
 		this.airport = airport;
-		
-		onDeparture = true;
 	}
-	
+
+	private void use(Resource.Type type) {
+		boolean resourceAcquired = false;
+
+		while (!resourceAcquired) {
+			try {
+				Resource resource = airport.getResource(type);
+
+				System.out.println(String.format("%s is acquiring resource %s", this, resource));
+				resource.acquire();
+				System.out.println(String.format("%s acquired resource %s", this, resource));
+
+				System.out.println(String.format("%s is using resource %s", this, resource));
+				resource.use();
+				System.out.println(String.format("%s finished using resource %s", this, resource));
+
+				System.out.println(String.format("%s is releasing resource %s", this, resource));
+				resource.release();
+				System.out.println(String.format("%s released resource %s", this, resource));
+				resourceAcquired = true;
+
+				if (resource.getType().equals(Resource.Type.AUTHORITY)) {
+				    airport.incrementCounter();
+                }
+
+			} catch (Exception e) {
+				System.out.println(String.format("%s encountered an error: %s", this, e.getMessage()));
+			}
+		}
+	}
+
 	@Override
 	public void run() {
-		
 		while (true) {
-			if (onDeparture) {
-				int techniqueNumber = -1;
-				int fuelNumber = -1;
-				int gateNumber = -1;
-				int runwayNumber = -1;
-				
-				while (techniqueNumber == -1)
-					techniqueNumber = airport.acquireTechnique();
-				
-				System.out.println(name + " acquired Technique" + String.valueOf(techniqueNumber));
-				airport.useTechnique(techniqueNumber);
-				airport.releaseTechnique(techniqueNumber);
-				techniqueNumber = -1;
-				
-				while (fuelNumber == -1)
-					fuelNumber = airport.acquireFuel();
-				
-				System.out.println(name + " acquired Fuel" + String.valueOf(fuelNumber));
-				airport.useFuel(fuelNumber);
-				airport.releaseFuel(fuelNumber);
-				fuelNumber = -1;
-				
-				while (gateNumber == -1)
-					gateNumber = airport.acquireGate();
-				
-				System.out.println(name + " acquired Gate" + String.valueOf(gateNumber));
-				airport.useGate(gateNumber);
-				airport.releaseGate(gateNumber);
-				gateNumber = -1;
-				
-				while (runwayNumber == -1)
-					runwayNumber = airport.acquireRunway();
-				
-				System.out.println(name + " acquired Runway" + String.valueOf(runwayNumber));
-				airport.useRunway(runwayNumber);
-				airport.releaseRunway(runwayNumber);
-				runwayNumber = -1;
-				
-				onDeparture = false;
-				
-			} else {
-				int runwayNumber = -1;
-				int gateNumber = -1;
-				
-				while (runwayNumber == -1)
-					runwayNumber = airport.acquireRunway();
-				
-				airport.useRunway(runwayNumber);
-				airport.releaseRunway(runwayNumber);
-				runwayNumber = -1;
-				
-				while (gateNumber == -1)
-					gateNumber = airport.acquireGate();
-				
-				airport.useGate(gateNumber);
-				airport.releaseGate(gateNumber);
-				gateNumber = -1;
-				
-				onDeparture = true;
+
+		    use(Resource.Type.AUTHORITY);
+
+			if (direction.equals(Direction.DEPARTURE)) {
+				use(Resource.Type.TECHNIQUE);
+				use(Resource.Type.FUEL);
+				use(Resource.Type.GATE);
+				use(Resource.Type.RUNWAY);
+
+				direction = Direction.ARRIVAL;
+
+			} else if (direction.equals(Direction.ARRIVAL)) {
+				use(Resource.Type.RUNWAY);
+				use(Resource.Type.GATE);
+
+				direction = Direction.DEPARTURE;
 			}
 		}
 	}
 	
 	@Override
 	public String toString() {
-		return this.name;
+        return "PLANE" + String.valueOf(number);
+	}
+
+	enum Direction {
+		DEPARTURE,
+		ARRIVAL
 	}
 }
