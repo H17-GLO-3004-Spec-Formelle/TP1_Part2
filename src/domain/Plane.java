@@ -32,6 +32,10 @@ public class Plane extends Thread {
 				System.out.println(String.format("%s released resource %s", this, resource));
 				resourceAcquired = true;
 
+				if (resource.getType().equals(Resource.Type.AUTHORITY)) {
+				    airport.incrementCounter();
+                }
+
 			} catch (Exception e) {
 				System.out.println(String.format("%s encountered an error: %s", this, e.getMessage()));
 			}
