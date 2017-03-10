@@ -18,6 +18,7 @@ public class Main {
 		}
 
 		// Temporaire jusqu'à ce qu'on lise à partir d'un fichier de config ->
+		configs.put("authorities", 1);
 		configs.put("fuels", 3);
 		configs.put("gates", 3);
 		configs.put("techniques", 3);
@@ -27,6 +28,7 @@ public class Main {
 		// <- Temporaire jusqu'à ce qu'on lise à partir d'un fichier de config
 
 		final Airport airport = new Airport();
+		airport.addResource(Resource.Type.AUTHORITY, configs.get("authorities"));
 		airport.addResource(Resource.Type.FUEL, configs.get("fuels"));
 		airport.addResource(Resource.Type.GATE, configs.get("gates"));
 		airport.addResource(Resource.Type.TECHNIQUE, configs.get("techniques"));

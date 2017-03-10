@@ -41,6 +41,9 @@ public class Plane extends Thread {
 	@Override
 	public void run() {
 		while (true) {
+
+		    use(Resource.Type.AUTHORITY);
+
 			if (direction.equals(Direction.DEPARTURE)) {
 				use(Resource.Type.TECHNIQUE);
 				use(Resource.Type.FUEL);
@@ -63,7 +66,7 @@ public class Plane extends Thread {
 		return this.name;
 	}
 
-	private enum Direction {
+	enum Direction {
 		DEPARTURE,
 		ARRIVAL
 	}

@@ -35,7 +35,7 @@ public class Resource {
 
     void use() {
         try {
-            Thread.sleep(2000);
+            Thread.sleep(type.delay);
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt(); //Should happen only when killing the execution
         }
@@ -54,15 +54,18 @@ public class Resource {
     }
 
     public enum Type {
-        FUEL("Fuel"),
-        GATE("Gate"),
-        RUNWAY("Runway"),
-        TECHNIQUE("Technique");
+        AUTHORITY("Authority", 0),
+        FUEL("Fuel", 1000),
+        GATE("Gate", 2000),
+        RUNWAY("Runway", 500),
+        TECHNIQUE("Technique", 2000);
 
         private final String name;
+        private final int delay; //In milliseconds
 
-        Type(String name) {
+        Type(String name, int delay) {
             this.name = name;
+            this.delay = delay;
         }
 
         @Override
