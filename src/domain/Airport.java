@@ -7,12 +7,12 @@ import exception.NoMoreResourceAvailableException;
 
 class Airport {
 
-    private final List<Resource> resources = new ArrayList<>();
-	private final List<Plane> planes = new ArrayList<>();
+    private List<Resource> resources = new ArrayList<>();
+	private List<Plane> planes = new ArrayList<>();
 
-	private final Counter counter = new Counter();
+	private Counter counter = new Counter();
 
-	void addResource(Resource.Type type, int amount) {
+	public void addResource(Resource.Type type, int amount) {
         for (int i = 0; i < amount; i++) {
             resources.add(new Resource(type, i));
         }
@@ -25,24 +25,39 @@ class Airport {
                 .orElseThrow(() -> new NoMoreResourceAvailableException(type));
     }
 
-    void addPlanes(int amount) {
+    public void addPlanes(int amount) {
         for (int i = 0; i < amount; i++) {
             planes.add(new Plane(i, this));
         }
     }
 
-    void start() {
+    public void start() {
 		System.out.println("Launching planes");
-
 		for (Plane plane : planes) {
 			plane.start();
 		}
 	}
+    
+    public void pause(boolean paused) {
+    	System.out.println("Unpause/Pause planes");
+    	for (Plane plane : planes) {
+    		plane.pause(paused);
+    	}
+    }
+    
+	public void destroy() {
+		for (Plane plane : planes) {
+    		plane.pause(true);
+    	}
+		planes = null;
+		resources = null;
+		counter = null;
+	}
 
-    void incrementCounter() {
+	public void incrementCounter() {
         counter.increment();
     }
-
+	
     private class Counter {
         int value = 0;
 

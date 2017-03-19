@@ -4,18 +4,28 @@ public class Plane extends Thread {
 
     private final int number;
 	private final Airport airport;
-
+	private boolean paused;
 	private Direction direction = Direction.DEPARTURE;
 
 	Plane(int number, Airport airport) {
 		this.number = number;
 		this.airport = airport;
+		this.paused = false;
+	}
+
+	@SuppressWarnings("deprecation")
+	public void pause(boolean paused) {
+		//this.paused = paused;
+		if (paused == true)
+			this.suspend();
+		else 
+			this.resume();
 	}
 
 	private void use(Resource.Type type) {
 		boolean resourceAcquired = false;
 
-		while (!resourceAcquired) {
+		while (!paused && !resourceAcquired) {
 			try {
 				Resource resource = airport.getResource(type);
 
@@ -44,7 +54,7 @@ public class Plane extends Thread {
 
 	@Override
 	public void run() {
-		while (true) {
+		while (!paused) {
 
 		    use(Resource.Type.AUTHORITY);
 
