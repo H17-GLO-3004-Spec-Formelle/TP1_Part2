@@ -64,14 +64,12 @@ public class Plane extends Thread {
 				use(Resource.Type.GATE);
 				use(Resource.Type.RUNWAY);
 
-				direction = Direction.ARRIVAL;
-
 			} else if (direction.equals(Direction.ARRIVAL)) {
 				use(Resource.Type.RUNWAY);
 				use(Resource.Type.GATE);
-
-				direction = Direction.DEPARTURE;
 			}
+
+			direction = Math.random() < 0.5 ? Direction.DEPARTURE : Direction.ARRIVAL;
 		}
 	}
 	
