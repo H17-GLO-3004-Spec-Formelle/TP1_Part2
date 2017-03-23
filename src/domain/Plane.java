@@ -5,7 +5,6 @@ public class Plane extends Thread {
     private final int number;
 	private final Airport airport;
 	private boolean paused;
-	private Direction direction = Direction.DEPARTURE;
 
 	Plane(int number, Airport airport) {
 		this.number = number;
@@ -56,30 +55,30 @@ public class Plane extends Thread {
 	public void run() {
 		while (!paused) {
 
-		    use(Resource.Type.AUTHORITY);
+			use(Resource.Type.AUTHORITY);
 
-			if (direction.equals(Direction.DEPARTURE)) {
-				use(Resource.Type.TECHNIQUE);
-				use(Resource.Type.FUEL);
-				use(Resource.Type.GATE);
-				use(Resource.Type.RUNWAY);
-
-			} else if (direction.equals(Direction.ARRIVAL)) {
-				use(Resource.Type.RUNWAY);
-				use(Resource.Type.GATE);
+			if (Math.random() < 0.5) {
+				departure();
+			} else {
+				arrival();
 			}
-
-			direction = Math.random() < 0.5 ? Direction.DEPARTURE : Direction.ARRIVAL;
 		}
+	}
+
+	private void departure() {
+		use(Resource.Type.TECHNIQUE);
+		use(Resource.Type.FUEL);
+		use(Resource.Type.GATE);
+		use(Resource.Type.RUNWAY);
+	}
+
+	private void arrival() {
+		use(Resource.Type.RUNWAY);
+		use(Resource.Type.GATE);
 	}
 	
 	@Override
 	public String toString() {
         return "PLANE" + String.valueOf(number);
-	}
-
-	enum Direction {
-		DEPARTURE,
-		ARRIVAL
 	}
 }
