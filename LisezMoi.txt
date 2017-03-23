@@ -5,10 +5,9 @@ Fait par: Mathieu BOILY 				- 111 127 896
 					Marc-Antoine FORTIER 	- 111 130 526
 	  			Maxime LAVERGNE 			- 111 110 783
 
-Avant de commencer
-	Installation de WindowBuilder:
-		- Tout dépendamment de votre version d'Eclipse, suivre les instructions à cette adresse:
-			http://www.eclipse.org/windowbuilder/download.php
+Avant de commencer !!IMPORTANT!!
+- Le projet doit absolument être compilé sur une machine Windows avec une JRE 32 bits, car l'interface graphique dépend de la librairie SWT qui n'est disponible qu'en version 32 bits.
+- Il vous faudra installer WindowBuilder dans Eclipse. Tout dépendamment de votre version d'Eclipse, il suffit de suivre les instructions à cette adresse: http://www.eclipse.org/windowbuilder/download.php
 
 Importation du projet
 	- Ouvrir Eclipse, et créer/sélectionner un 'workspace'.
