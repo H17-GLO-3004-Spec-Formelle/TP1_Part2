@@ -1,39 +1,38 @@
-GLO-3004 Spécification et vérification formelle de logiciels
-	Projet 1 : étape 2 spécification en FSP ( 15%) : Gestion de ressources d’un aéroport
+GLO-3004 - SpÃ©cification formelle et vÃ©rification de logiciels
+	Projet 1 , Ã‰tape 2 : SpÃ©cification en FSP (15%) : Gestion de ressources d'un aÃ©roport
 
-Fait par: Mathieu BOILY - 111 127 896
-	  Marc-Antoire FORTIER - 111 130 529
-	  Maxime LAVEGNE - 111 110 783
+Fait par: Mathieu BOILY 				- 111 127 896
+					Marc-Antoine FORTIER 	- 111 130 526
+	  			Maxime LAVERGNE 			- 111 110 783
 
 Avant de commencer
 	Installation de WindowBuilder:
-		- Tout dépendamment de votre version d'Éclipse, suivre les instructions à cette adresse:
+		- Tout dÃ©pendamment de votre version d'Eclipse, suivre les instructions Ã  cette adresse:
 			http://www.eclipse.org/windowbuilder/download.php
 
 Importation du projet
-	- Ouvrir éclipse, et créer/sélectionner un 'workspace'.
-	- Aller à 'File' -> 'Importer'.
-	- Sélectionner 'General' -> 'Existing Projects into Workspace' puis 'Next'.
-	- Sélectionner le dossier dézippé du travail dans 'Select root directory'.
-	- Sélectionnez le projet 'GLO3004_TP2' dans l'encadrer 'Projet' puis 'Finish'.
+	- Ouvrir Eclipse, et crÃ©er/sÃ©lectionner un 'workspace'.
+	- Aller Ã  'File' -> 'Importer'.
+	- SÃ©lectionner 'General' -> 'Existing Projects into Workspace' puis 'Next'.
+	- SÃ©lectionner le dossier dÃ©zippÃ© du travail dans 'Select root directory'.
+	- SÃ©lectionnez le projet 'GLO3004_TP2' dans l'encadrer 'Projet', puis 'Finish'.
 
-Exécution du projet
-	- Sélectionner 'MainWindow.java' qui se trouve dans src->ui
-	- Exécuter l'application avec la commande Run dans le menu Run. (CTRL+F11)
+ExÃ©cution du projet
+	- SÃ©lectionner 'MainWindow.java' qui se trouve sous les packages 'src -> ui'
+	- ExÃ©cuter l'application avec la commande 'Run' dans le menu 'Run'. (CTRL+F11)
 
-Comment ça marche?
-	Démarrer un simulation
-		- Entrer les configurations désirées dans l'interface.
-		- Une fois les configurations choisises, appuyer sur 'Start' pour démarrer la simulation.
-		- Les résultats obtenus sont afficher dans la console d'Éclipse.
-	
+Comment Ã§a marche?
+	DÃ©marrer une simulation
+		- Entrer les configurations dÃ©sirÃ©es dans l'interface.
+		- Une fois les configurations choisies, appuyer sur 'Start' pour dÃ©marrer la simulation.
+		- Les rÃ©sultats obtenus sont affichÃ©s dans la console d'eclipse.
+
 	Mettre en pause une simulation
-		- Pendant tout moment, vous pouvez appuyer sur Pause pour mettre en pause la simulation.
-		- Réappuyer sur le même bouton ('Unpause') pour reprendre la simulation.
+		- Ã€ tout moment, vous pouvez appuyer sur 'Pause' pour mettre en pause la simulation.
+		- RÃ©appuyer sur le mÃªme bouton ('Unpause') pour reprendre la simulation.
 
-	Arrêter une simulation
-		- Appuyer sur le bouton 'Stop' pour arrêter une simulation.
-		** ATTENTION : La simulation sera complètement perdu.
-
+	ArrÃªter une simulation
+		- Appuyer sur le bouton 'Stop' pour arrÃªter une simulation.
+		** ATTENTION : La simulation sera complÃªtement perdue.
 
 Bonne simulation!
